@@ -39,12 +39,18 @@ public class SberbankTest extends BaseTests {
         waitElementToBeClickable(orderOnlineYouthCard);
         orderOnlineYouthCard.click();
 
+        // 6. Проверить наличие на странице заголовка – «Молодёжная карта»
+        String headPageYouthXPath = "//h1";
+        waitUtilElementToBeVisible(By.xpath(headPageYouthXPath));
+        WebElement headPageYouth = driver.findElement(By.xpath(headPageYouthXPath));
+        assertEquals("Заголовок \"Молодёжная карта\" не найден!",
+                "Молодёжная карта", headPageYouth.getText());
+
         Thread.sleep(5000);
 
     }
 
     /*
-    6. Проверить наличие на странице заголовка – «Молодёжная карта»
     7. кликнуть на кнопку «Оформить онлайн» под заголовком
     8. В представленной форме заполнить поля:
         •Фамилию, Имя, Отчетво, Имя и фамилия на карте, Дату рождения, E-mail, Мобильный телефон
