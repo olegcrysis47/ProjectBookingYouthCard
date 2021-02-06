@@ -1,18 +1,25 @@
 package ru.aristovo.tests;
 
 import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import ru.aristovo.base.BaseTests;
 
 public class SberbankTest extends BaseTests {
 
     @Test
-    public void testBookingCard() {
+    public void testBookingCard() throws InterruptedException {
+
+        // Нажать на меню – Карты
+        String cardsButtonXPath = "//a[contains(text(), 'Карты')]";
+        WebElement cardsButton = driver.findElement(By.xpath(cardsButtonXPath));
+        cardsButton.click();
+
+        Thread.sleep(5000);
 
     }
 
     /*
-    1. Перейти на страницу http://www.sberbank.ru/ru/person
-    2. Нажать на меню – Карты
     3. Выбрать подменю – «Дебетовые карты»
     4. Проверить наличие на странице заголовка – «Дебетовые карты»
     5. Под заголовком из представленных карт найти “Молодёжная карта” и кликнуть на кнопку данной карты “Заказать онлайн”
