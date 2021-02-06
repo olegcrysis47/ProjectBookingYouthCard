@@ -46,12 +46,21 @@ public class SberbankTest extends BaseTests {
         assertEquals("Заголовок \"Молодёжная карта\" не найден!",
                 "Молодёжная карта", headPageYouth.getText());
 
+        /* НЕ СРАБАТЫВАЕТ
+        org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (473, -242)
+        без этого кода драйвер сам прыгает на форму заполнения
+        // 7. Кликнуть на кнопку «Оформить онлайн» под заголовком
+        String checkoutOnlineButtonXPath =
+                "//a[@data-test-id='PageTeaserDict_button']/span[contains(text(), 'Оформить онлайн')]";
+        WebElement checkoutOnlineButton = driver.findElement(By.xpath(checkoutOnlineButtonXPath));
+        waitElementToBeClickable(checkoutOnlineButton);
+        checkoutOnlineButton.click();
+        */
         Thread.sleep(5000);
 
     }
 
     /*
-    7. кликнуть на кнопку «Оформить онлайн» под заголовком
     8. В представленной форме заполнить поля:
         •Фамилию, Имя, Отчетво, Имя и фамилия на карте, Дату рождения, E-mail, Мобильный телефон
         •Основной документ - не заполняем
