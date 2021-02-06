@@ -32,12 +32,18 @@ public class SberbankTest extends BaseTests {
         assertEquals("Заголовок \"Дебетовые карты\" не найден!",
                 "Дебетовые карты", headingPage.getText());
 
+        // 5. Под заголовком из представленных карт найти “Молодёжная карта”
+        // и кликнуть на кнопку данной карты “Заказать онлайн”
+        String orderOnlineYouthCardXPath = "//a[@data-product='Молодёжная карта']/span[text()='Заказать онлайн']";
+        WebElement orderOnlineYouthCard = driver.findElement(By.xpath(orderOnlineYouthCardXPath));
+        waitElementToBeClickable(orderOnlineYouthCard);
+        orderOnlineYouthCard.click();
+
         Thread.sleep(5000);
 
     }
 
     /*
-    5. Под заголовком из представленных карт найти “Молодёжная карта” и кликнуть на кнопку данной карты “Заказать онлайн”
     6. Проверить наличие на странице заголовка – «Молодёжная карта»
     7. кликнуть на кнопку «Оформить онлайн» под заголовком
     8. В представленной форме заполнить поля:
@@ -66,6 +72,13 @@ public class SberbankTest extends BaseTests {
 
     private void waitUtilElementToBeVisible(By locator) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    /*
+    Ожидаем когда элемент станет кликабельным
+     */
+    private void waitElementToBeClickable(WebElement element) {
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
 }
