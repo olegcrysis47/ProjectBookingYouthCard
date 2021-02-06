@@ -24,6 +24,7 @@ public class BaseTests {
 
         wait = new WebDriverWait(driver, 10,1000);
 
+        // 1. Перейти на страницу http://www.sberbank.ru/ru/person
         String baseUrl = "https://www.sberbank.ru/ru/person";
         driver.get(baseUrl);
     }
