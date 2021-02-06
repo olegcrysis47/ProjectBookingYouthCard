@@ -10,17 +10,22 @@ public class SberbankTest extends BaseTests {
     @Test
     public void testBookingCard() throws InterruptedException {
 
-        // Нажать на меню – Карты
+        // 2. Нажать на меню – Карты
         String cardsButtonXPath = "//a[contains(text(), 'Карты')]";
         WebElement cardsButton = driver.findElement(By.xpath(cardsButtonXPath));
         cardsButton.click();
+
+        // 3. Выбрать подменю – «Дебетовые карты»
+        String debtCardsButtonXPath = "//a[@data-cga_click_top_menu=" +
+                "'Карты_Дебетовые карты_type_important' and contains(text(), 'Дебетовые карты')]";
+        WebElement debtCardsButton = driver.findElement(By.xpath(debtCardsButtonXPath));
+        debtCardsButton.click();
 
         Thread.sleep(5000);
 
     }
 
     /*
-    3. Выбрать подменю – «Дебетовые карты»
     4. Проверить наличие на странице заголовка – «Дебетовые карты»
     5. Под заголовком из представленных карт найти “Молодёжная карта” и кликнуть на кнопку данной карты “Заказать онлайн”
     6. Проверить наличие на странице заголовка – «Молодёжная карта»
