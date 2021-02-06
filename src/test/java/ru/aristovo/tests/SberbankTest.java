@@ -3,6 +3,7 @@ package ru.aristovo.tests;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.aristovo.base.BaseTests;
@@ -56,6 +57,12 @@ public class SberbankTest extends BaseTests {
         waitElementToBeClickable(checkoutOnlineButton);
         checkoutOnlineButton.click();
         */
+
+        // Прокрутка до формы заполнения "Личные данные"
+        String personalDataXPath = "//h2[text()='Личные данные']";
+        WebElement personalData = driver.findElement(By.xpath(personalDataXPath));
+        scrollToElementJs(personalData);
+
         Thread.sleep(5000);
 
     }
@@ -94,6 +101,12 @@ public class SberbankTest extends BaseTests {
      */
     private void waitElementToBeClickable(WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    // Метод для прокрутки до нужного места
+    private void scrollToElementJs(WebElement element) {
+        JavascriptExecutor javascriptExecutor = (JavascriptExecutor) driver;
+        javascriptExecutor.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
 }
