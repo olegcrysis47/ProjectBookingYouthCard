@@ -58,10 +58,38 @@ public class SberbankTest extends BaseTests {
         checkoutOnlineButton.click();
         */
 
+
         // Прокрутка до формы заполнения "Личные данные"
         String personalDataXPath = "//h2[text()='Личные данные']";
         WebElement personalData = driver.findElement(By.xpath(personalDataXPath));
+        waitUtilElementToBeVisible(personalData);
         scrollToElementJs(personalData);
+
+        Thread.sleep(2000); // пришлось проставить задержку, т.к. не прокручивал до "Личные данные"
+
+        // 8. В представленной форме заполнить поля:
+        //        •Фамилию, Имя, Отчетво, Имя и фамилия на карте, Дату рождения, E-mail, Мобильный телефон
+        //        •Основной документ - не заполняем
+
+        // Фамилия
+        String lastNameXPath = "//input[@name='odc-personal__lastName']";
+        WebElement lastName = driver.findElement(By.xpath(lastNameXPath));
+        scrollToElementJs(lastName);
+        waitElementToBeClickable(lastName);
+        lastName.click();
+        lastName.sendKeys("Пушкарев");
+
+        // Имя
+
+        // Отчетство
+
+        // Имя и фамилия на карте
+
+        // Дата рождения
+
+        // E-mail
+
+        // Мобильный телефон
 
         Thread.sleep(5000);
 
