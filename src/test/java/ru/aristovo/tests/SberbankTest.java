@@ -90,6 +90,13 @@ public class SberbankTest extends BaseTests {
         assertEquals("Имя введено не верно", "Олег", firstName.getAttribute("value"));
 
         // Отчетство
+        String middleNameXPath = "//input[@id='odc-personal__middleName']";
+        WebElement middleName = driver.findElement(By.xpath(middleNameXPath));
+        waitElementToBeClickable(middleName);
+        middleName.click();
+        middleName.sendKeys("Александрович");
+
+        assertEquals("Отчетство введено не верно", "Александрович", middleName.getAttribute("value"));
 
         // Имя и фамилия на карте
 
