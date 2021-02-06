@@ -11,6 +11,10 @@ import java.util.concurrent.TimeUnit;
 public class BaseTests {
 
     public WebDriver driver;
+    /*
+    https://habr.com/ru/post/443754/
+    https://comaqa.gitbook.io/selenium-webdriver-lectures/selenium-webdriver.-vvedenie/ozhidaniya
+     */
     public WebDriverWait wait;
 
 
