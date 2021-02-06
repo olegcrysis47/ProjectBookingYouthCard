@@ -106,8 +106,23 @@ public class SberbankTest extends BaseTests {
                 "OLEG PUSHKAREV", nameOnCard.getAttribute("value"));
 
         // Дата рождения
+        String birthDateXPath = "//input[@id='odc-personal__birthDate']";
+        WebElement birthDate = driver.findElement(By.xpath(birthDateXPath));
+        waitElementToBeClickable(birthDate);
+        birthDate.click();
+        birthDate.clear();
+        birthDate.sendKeys("01.12.2001");
+
+        assertEquals("Дата введена не верно", "01.12.2001", birthDate.getAttribute("value"));
+
+        Thread.sleep(2000);
 
         // E-mail
+        String emailFieldXPath = "//input[@id='odc-personal__email']";
+        WebElement emailField = driver.findElement(By.xpath(emailFieldXPath));
+        waitElementToBeClickable(emailField);
+        birthDate.click();
+        birthDate.sendKeys("tyler98765@yandex.ru");
 
         // Мобильный телефон
 
