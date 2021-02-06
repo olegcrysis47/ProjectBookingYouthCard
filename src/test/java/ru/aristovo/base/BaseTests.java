@@ -10,8 +10,8 @@ import java.util.concurrent.TimeUnit;
 
 public class BaseTests {
 
-    private WebDriver driver;
-    private WebDriverWait wait;
+    public WebDriver driver;
+    public WebDriverWait wait;
 
 
     @Before
