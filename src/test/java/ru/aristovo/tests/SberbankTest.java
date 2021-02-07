@@ -110,31 +110,35 @@ public class SberbankTest extends BaseTests {
         WebElement birthDate = driver.findElement(By.xpath(birthDateXPath));
         waitElementToBeClickable(birthDate);
         birthDate.click();
-        birthDate.clear();
         birthDate.sendKeys("01.12.2001");
 
         assertEquals("Дата введена не верно", "01.12.2001", birthDate.getAttribute("value"));
-
-        Thread.sleep(2000);
 
         // E-mail
         String emailFieldXPath = "//input[@id='odc-personal__email']";
         WebElement emailField = driver.findElement(By.xpath(emailFieldXPath));
         waitElementToBeClickable(emailField);
-        birthDate.click();
-        birthDate.sendKeys("tyler98765@yandex.ru");
+        emailField.click();
+        emailField.sendKeys("tyler98765@yandex.ru");
+
+        assertEquals("Поле e-mail заполнено не верно",
+                "tyler98765@yandex.ru", emailField.getAttribute("value"));
 
         // Мобильный телефон
+        String mobilePhoneXPath = "//input[@id='odc-personal__phone']";
+        WebElement mobilePhone = driver.findElement(By.xpath(mobilePhoneXPath));
+        waitElementToBeClickable(mobilePhone);
+        mobilePhone.click();
+        mobilePhone.sendKeys("9991234455");
+
+        assertEquals("Мобильный телефон введен не верно",
+                "+7 (999) 123-44-55", mobilePhone.getAttribute("value"));
 
         Thread.sleep(5000);
 
     }
 
     /*
-    8. В представленной форме заполнить поля:
-        •Фамилию, Имя, Отчетво, Имя и фамилия на карте, Дату рождения, E-mail, Мобильный телефон
-        •Основной документ - не заполняем
-    9. Проверить, что все поля заполнены правильно
     10. Нажать «Далее»
     11. Проверить, что появилось сообщение именно у незаполненных полях – «Обязательное поле»
 
