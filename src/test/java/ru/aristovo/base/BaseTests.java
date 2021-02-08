@@ -26,7 +26,7 @@ public class BaseTests {
         driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(40,TimeUnit.SECONDS);
 
-        wait = new WebDriverWait(driver, 10,1000);
+        wait = new WebDriverWait(driver, 50,1000);
 
         // 1. Перейти на страницу http://www.sberbank.ru/ru/person
         String baseUrl = "https://www.sberbank.ru/ru/person";
