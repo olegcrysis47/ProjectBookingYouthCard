@@ -151,6 +151,15 @@ public class SberbankTest extends BaseTests {
         assertEquals("Поле не соответствует ожидаемому",
                 "Обязательное поле", seriesPassportNoEnter.getText());
 
+        // Проверка сообщения "Обязательное поле" под полем "Номер"
+        String numbersPassportNoEnterXPath = "//label[contains(text(), " +
+                "'Номер')]/following-sibling::div[contains(text(), 'Обязательное поле')]";
+        WebElement numbersPassportNoEnter = driver.findElement(By.xpath(numbersPassportNoEnterXPath));
+        waitUtilElementToBeVisible(numbersPassportNoEnter);
+
+        assertEquals("Поле не соответствует ожидаемому",
+                "Обязательное поле", numbersPassportNoEnter.getText());
+
         Thread.sleep(5000);
 
     }
