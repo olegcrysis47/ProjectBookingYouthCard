@@ -66,7 +66,7 @@ public class SberbankTest extends BaseTests {
         waitUtilElementToBeVisible(personalData);
         scrollToElementJs(personalData);
 
-        Thread.sleep(3000); // пришлось проставить задержку, т.к. не прокручивал до "Личные данные"
+        Thread.sleep(4000); // пришлось проставить задержку, т.к. не прокручивал до "Личные данные"
 
         // 8. В представленной форме заполнить поля:
         //        •Фамилию, Имя, Отчетво, Имя и фамилия на карте, Дату рождения, E-mail, Мобильный телефон
@@ -160,14 +160,20 @@ public class SberbankTest extends BaseTests {
         assertEquals("Поле не соответствует ожидаемому",
                 "Обязательное поле", numbersPassportNoEnter.getText());
 
+        // Проверка сообщения "Обязательное поле" под полем "Дата выдачи"
+        String datePassportNoEnterXPath = "//label[contains(text(), 'Дата выдачи')]" +
+                "/following-sibling::div[contains(text(), 'Обязательное поле')]";
+        WebElement datePassportNoEnter = driver.findElement(By.xpath(datePassportNoEnterXPath));
+        waitUtilElementToBeVisible(datePassportNoEnter);
+
+        assertEquals("Поле не соответствует ожидаемому",
+                "Обязательное поле", datePassportNoEnter.getText());
+
         Thread.sleep(5000);
 
     }
 
     /*
-
-
-
     •Сборка проекта с помощью Maven
     •Аннотации JUnit (@Before, @After,....)
     •Assert, AssertThat
