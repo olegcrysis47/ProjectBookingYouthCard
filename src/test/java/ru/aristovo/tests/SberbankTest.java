@@ -48,7 +48,8 @@ public class SberbankTest extends BaseTests {
                 "Молодёжная карта", headPageYouth.getText());
 
         /* НЕ СРАБАТЫВАЕТ
-        org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (473, -242)
+        org.openqa.selenium.ElementClickInterceptedException:
+        element click intercepted: Element is not clickable at point (473, -242)
         без этого кода драйвер сам прыгает на форму заполнения
         // 7. Кликнуть на кнопку «Оформить онлайн» под заголовком
         String checkoutOnlineButtonXPath =
@@ -133,13 +134,18 @@ public class SberbankTest extends BaseTests {
 
         assertEquals("Мобильный телефон введен не верно",
                 "+7 (999) 123-44-55", mobilePhone.getAttribute("value"));
+        
+        //10. Нажать «Далее»
+        String continueButtonXPath = "//span[.='Далее']";
+        WebElement continueButton = driver.findElement(By.xpath(continueButtonXPath));
+        waitElementToBeClickable(continueButton);
+        continueButton.click();
 
         Thread.sleep(5000);
 
     }
 
     /*
-    10. Нажать «Далее»
     11. Проверить, что появилось сообщение именно у незаполненных полях – «Обязательное поле»
 
 
