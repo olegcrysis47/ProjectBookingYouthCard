@@ -135,18 +135,28 @@ public class SberbankTest extends BaseTests {
         assertEquals("Мобильный телефон введен не верно",
                 "+7 (999) 123-44-55", mobilePhone.getAttribute("value"));
         
-        //10. Нажать «Далее»
+        // 10. Нажать «Далее»
         String continueButtonXPath = "//span[.='Далее']";
         WebElement continueButton = driver.findElement(By.xpath(continueButtonXPath));
         waitElementToBeClickable(continueButton);
         continueButton.click();
+
+        // 11. Проверить, что появилось сообщение именно у незаполненных полях – «Обязательное поле»
+        // Проверка сообщения "Обязательное поле" под полем "Серия"
+        String seriesPassportNoEnterXPath = "//label[contains(text(), " +
+                "'Серия')]/following-sibling::div[contains(text(), 'Обязательное поле')]";
+        WebElement seriesPassportNoEnter = driver.findElement(By.xpath(seriesPassportNoEnterXPath));
+        waitUtilElementToBeVisible(seriesPassportNoEnter);
+
+        assertEquals("Поле не соответствует ожидаемому",
+                "Обязательное поле", seriesPassportNoEnter.getText());
 
         Thread.sleep(5000);
 
     }
 
     /*
-    11. Проверить, что появилось сообщение именно у незаполненных полях – «Обязательное поле»
+
 
 
     •Сборка проекта с помощью Maven
